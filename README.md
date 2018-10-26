@@ -46,16 +46,16 @@
 ### 0.配置文件[application.properties]
 在springboot的application.properties中添加如下配置
 
-    # 后端获取accesskey
-    spring.rocketmq.accessKey=your-accesskey
-    # 后台获取secret
-    spring.rocketmq.secretkey=your-secretkey
-    # 消息超时时间
-    spring.rocketmq.msgTimeOutMillis=500000
-    # 远端连接地址
-    spring.rocketmq.onsAddr=http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet
-    # 订阅模式：集群：PropertyValueConst.CLUSTERING 广播：BROADCASTING
-    spring.rocketmq.messageModel=CLUSTERING
+        # 后端获取accesskey
+        spring.rocketmq.accessKey=your-accesskey
+        # 后台获取secret
+        spring.rocketmq.secretkey=your-secretkey
+        # 消息超时时间
+        spring.rocketmq.msgTimeOutMillis=500000
+        # 远端连接地址
+        spring.rocketmq.onsAddr=http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet
+        # 订阅模式：集群：PropertyValueConst.CLUSTERING 广播：BROADCASTING
+        spring.rocketmq.messageModel=CLUSTERING
 
 ### 1. 事务消息生产者[TransactionProducerAgent]
 
@@ -63,25 +63,25 @@
 
 0. 在需要使用消息事务的业务类中通过 **@Autowired** 引入TransactionProducerAgent
 
-    @Autowired
-    TransactionProducerAgent transactionProducerAgent;
+        @Autowired
+        TransactionProducerAgent transactionProducerAgent;
     
 1. 定义一个void方法，不能throw异常，注解为@PostConstruct，
 进行事务消息生产者初始化。此处应当同时注入业务回查方法及生产者id
 
 
-    @PostConstruct
-    public void execute() {
-        transactionProducerAgent.init(
-                new LocalTransactionChecker() {
-                    @Override
-                    public TransactionStatus check(Message msg) {
-                        System.out.println("收到事务消息的回查请求, MsgId: " + msg.getMsgID());
-                        return TransactionStatus.CommitTransaction;
-                    }
-                },
-                "PID-GYJX"
-        ).start();
+        @PostConstruct
+        public void execute() {
+            transactionProducerAgent.init(
+                    new LocalTransactionChecker() {
+                        @Override
+                        public TransactionStatus check(Message msg) {
+                            System.out.println("收到事务消息的回查请求, MsgId: " + msg.getMsgID());
+                            return TransactionStatus.CommitTransaction;
+                        }
+                    },
+                    "PID-GYJX"
+            ).start();
 
 2. 业务方法中发送消息，需要调用者自己实现消本地业务的提交操作，这里可以使用匿名内部类或者编写新的
 业务逻辑类并注入事务消息方法。
