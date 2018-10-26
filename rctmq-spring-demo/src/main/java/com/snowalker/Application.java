@@ -12,20 +12,13 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.snowalker", "com.gaoyang"})
+@ComponentScan(basePackages = { "com.snowalker", "com.gaoyang" })
 public class Application {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 
-
 	public static void main(String[] args) throws Exception {
 		ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
-		SnowalkerAcmServer acmServer = context.getBean("snowalkerAcmServer", SnowalkerAcmServer.class);
-		while(true) {
-			Thread.sleep(2000);
-			LOGGER.info("snowalker配置项目:age=" + acmServer.getPorpertiesValue("age") + ",switch=" + acmServer.getPorpertiesValue("switch"));
-		}
 	}
-
 
 }
