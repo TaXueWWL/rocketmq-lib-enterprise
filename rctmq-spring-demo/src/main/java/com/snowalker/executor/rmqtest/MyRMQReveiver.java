@@ -1,8 +1,8 @@
 package com.snowalker.executor.rmqtest;
 
 import com.aliyun.openservices.ons.api.*;
-import com.gaoyang.marketing.rocketmq.ConsumerConfig;
-import com.gaoyang.marketing.rocketmq.consumer.SimpleConsumerAgent;
+import com.snowalker.rocketmq.ConsumerConfig;
+import com.snowalker.rocketmq.consumer.SimpleConsumerAgent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

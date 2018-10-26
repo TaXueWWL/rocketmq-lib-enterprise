@@ -1,4 +1,4 @@
-package com.gaoyang.marketing.rocketmq;
+package com.snowalker.rocketmq;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

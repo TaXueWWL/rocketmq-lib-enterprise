@@ -1,4 +1,4 @@
-package com.gaoyang.marketing.rocketmq;
+package com.snowalker.rocketmq;
 
 
 /**

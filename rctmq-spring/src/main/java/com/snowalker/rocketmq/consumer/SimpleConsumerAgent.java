@@ -1,9 +1,9 @@
-package com.gaoyang.marketing.rocketmq.consumer;
+package com.snowalker.rocketmq.consumer;
 
 import com.aliyun.openservices.ons.api.*;
 import com.aliyun.openservices.ons.api.exception.ONSClientException;
-import com.gaoyang.marketing.rocketmq.ConsumerConfig;
-import com.gaoyang.marketing.rocketmq.RMQConfig;
+import com.snowalker.rocketmq.ConsumerConfig;
+import com.snowalker.rocketmq.RMQConfig;
 import com.google.common.base.Preconditions;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

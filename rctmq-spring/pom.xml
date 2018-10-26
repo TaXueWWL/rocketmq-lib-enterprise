@@ -13,6 +13,7 @@
     <artifactId>rctmq-spring</artifactId>
     <groupId>com.snowalker</groupId>
     <version>1.0.0</version>
+    <name>rctmq-spring</name>
 
     <properties>
         <java.version>1.8</java.version>

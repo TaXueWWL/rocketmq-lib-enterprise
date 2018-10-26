@@ -6,12 +6,10 @@ import com.aliyun.openservices.ons.api.transaction.LocalTransactionExecuter;
 import com.aliyun.openservices.ons.api.transaction.TransactionStatus;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gaoyang.marketing.protocol.PaymentProtocol;
-import com.gaoyang.marketing.protocol.RollbackProtocol;
-import com.gaoyang.marketing.rocketmq.ConsumerConfig;
-import com.gaoyang.marketing.rocketmq.consumer.SimpleConsumerAgent;
-import com.gaoyang.marketing.rocketmq.producer.SimpleProducerAgent;
-import com.gaoyang.marketing.rocketmq.producer.TransactionProducerAgent;
+import com.snowalker.rocketmq.ConsumerConfig;
+import com.snowalker.rocketmq.consumer.SimpleConsumerAgent;
+import com.snowalker.rocketmq.producer.SimpleProducerAgent;
+import com.snowalker.rocketmq.producer.TransactionProducerAgent;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.PostConstruct;
-import java.util.Date;
 
 
 /**
@@ -118,29 +115,10 @@ public class MQSenderController {
     @RequestMapping("sendTransaction")
     public String sendTransaction(HttpServletRequest request) throws Exception {
 
-        String tradeId = request.getParameter("tradeId");
-
-        PaymentProtocol paymentProtocol = new PaymentProtocol();
-
-        paymentProtocol.setAccountId("021809270959470217011300099");
-        paymentProtocol.setTradeAmountReal("1000.000");
-
-        paymentProtocol.setOnlineProdId("1");
-        paymentProtocol.setPhoneNum("15620974206");
-        paymentProtocol.setProdId("1");
-        paymentProtocol.setZfbUserId("17272717271");
-
-        paymentProtocol.setTradeId(tradeId);
-        paymentProtocol.setDeliverExtMsg("发货备注");
-        paymentProtocol.setSiSupplierId("1");
-
-        paymentProtocol.setTraceId("ac1e5355201809281809121060001");
-        paymentProtocol.setUserId("021809241801230205010100001");
-        paymentProtocol.setMsgName(MsgProtocolConst.PAYMENT.getMsgName());
-        paymentProtocol.setTopicName(MsgProtocolConst.PAYMENT.getMsgTopic());
+        String msg = request.getParameter("tradeId");
 
 
-        String sendMsg = paymentProtocol.encode();
+        String sendMsg = msg;
         System.out.println(sendMsg);
 
         SendResult sendResult = transactionProducerAgent.send(
@@ -199,14 +177,8 @@ public class MQSenderController {
     @RequestMapping("sendRollback")
     public String sendRollback(HttpServletRequest request) throws Exception {
         String tradeId = request.getParameter("tradeId");
-        RollbackProtocol rollbackProtocol = new RollbackProtocol();
-        rollbackProtocol.setUserId("021809261351450010010600001");
-        rollbackProtocol.setTradeId(tradeId);
-        rollbackProtocol.setTraceId("0000000000001");
-        rollbackProtocol.setMsgName(MsgProtocolConst.ROLLBACK.getMsgName());
-        rollbackProtocol.setTopicName(MsgProtocolConst.ROLLBACK.getMsgTopic());
 
-        String sendMsg = rollbackProtocol.encode();
+        String sendMsg = tradeId;
         System.out.println(sendMsg);
 
         SendResult sendResult = transactionProducerAgent.send(

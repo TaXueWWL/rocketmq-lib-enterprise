@@ -1,14 +1,13 @@
-package com.gaoyang.marketing.rocketmq.producer;
+package com.snowalker.rocketmq.producer;
 
 import com.aliyun.openservices.ons.api.*;
 import com.aliyun.openservices.ons.api.exception.ONSClientException;
-import com.gaoyang.marketing.rocketmq.RMQConfig;
+import com.snowalker.rocketmq.RMQConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import java.util.Properties;

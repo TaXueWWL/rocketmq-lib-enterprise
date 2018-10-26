@@ -1,11 +1,11 @@
-package com.gaoyang.marketing.rocketmq.producer;
+package com.snowalker.rocketmq.producer;
 
 import com.aliyun.openservices.ons.api.*;
 import com.aliyun.openservices.ons.api.bean.TransactionProducerBean;
 import com.aliyun.openservices.ons.api.transaction.LocalTransactionChecker;
 import com.aliyun.openservices.ons.api.transaction.LocalTransactionExecuter;
 import com.aliyun.openservices.ons.api.transaction.TransactionProducer;
-import com.gaoyang.marketing.rocketmq.RMQConfig;
+import com.snowalker.rocketmq.RMQConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
