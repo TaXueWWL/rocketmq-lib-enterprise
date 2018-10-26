@@ -1,0 +1,5 @@
+com\gaoyang\marketing\rocketmq\producer\SimpleProducerAgent.class
+com\gaoyang\marketing\rocketmq\producer\TransactionProducerAgent.class
+com\gaoyang\marketing\rocketmq\consumer\SimpleConsumerAgent.class
+com\gaoyang\marketing\rocketmq\ConsumerConfig.class
+com\gaoyang\marketing\rocketmq\RMQConfig.class
