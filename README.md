@@ -40,7 +40,7 @@
 
         <dependency>
 			<artifactId>rctmq-spring</artifactId>
-			<groupId>com.gyjx.marketing</groupId>
+			<groupId>com.snowalker</groupId>
 			<version>1.0.0</version>
 		</dependency>
 ### 0.配置文件[application.properties]
